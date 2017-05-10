@@ -49,3 +49,7 @@ Open a web browser and go to this URL:
 ```
 http://${elb_dns_name}:8080
 ```
+
+## screenshot ##
+If it works, it should look this:
+![alt text](https://github.com/yas360/simple-go-app/blob/master/images/go-web-app.png "Go app screenshot")
