@@ -1,5 +1,0 @@
-region = "eu-west-1"
-vpc_cidr_block = "10.100.0.0/16"
-public_subnet_1a_cidr = "10.100.0.0/20"
-public_subnet_1b_cidr = "10.100.16.0/20"
-public_subnet_1c_cidr = "10.100.32.0/20"
