@@ -42,4 +42,10 @@ $ cd app-server
 $ terraform plan -var region=eu-west-1 -var access_key=xxxxx -var secret_key=xxxxx
 $ terraform apply
 ```
-There are other ways of providing AWS credentials for authentications - see [here](https://www.terraform.io/docs/providers/aws/#authentication) 
+There are other ways of providing AWS credentials for authentications - see [here](https://www.terraform.io/docs/providers/aws/#authentication)
+
+## access the application ##
+Open a web browser and go to this URL:
+```
+http://${elb_dns_name}:8080
+```
