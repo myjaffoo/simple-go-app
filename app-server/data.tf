@@ -1,11 +1,11 @@
-data "aws_ami" "centos_ami" {
+data "aws_ami" "rhel7_ami" {
   most_recent = true
 
   filter {
-    name = "description"
+    name = "name"
 
     values = [
-      "CentOS Linux 6 x86_64 HVM EBS 1602",
+      "RHEL-7.3_HVM_GA-20161026-x86_64*",
     ]
   }
 }
@@ -13,5 +13,9 @@ data "aws_ami" "centos_ami" {
 data "template_file" "app_install" {
   template = "${file("${path.module}/template_files/install.tpl")}"
 
-  vars {}
+  vars {
+    version= "${var.version}"
+    os = "${var.os}"
+    arch = "${var.arch}"
+  }
 }

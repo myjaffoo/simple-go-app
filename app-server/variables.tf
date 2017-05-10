@@ -81,3 +81,15 @@ variable "public_subnet_1b_cidr" {
 variable "public_subnet_1c_cidr" {
   description = "The CIDR block for the public subnet in eu-west-1c"
 }
+
+variable "version" {
+  description = "latest stable version of the go binary"
+}
+
+variable "os" {
+  description = "linux, darwin, windows"
+}
+
+variable "arch" {
+  description = "amd64, 386, arm, s390x, ppc64le"
+}

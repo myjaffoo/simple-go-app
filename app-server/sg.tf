@@ -22,7 +22,7 @@ resource "aws_security_group_rule" "sgr_egress_all" {
 }
 
 resource "aws_security_group_rule" "sgr_ingress_8484" {
-  type                     = "egress"
+  type                     = "ingress"
   protocol                 = "tcp"
   from_port                = 8484
   to_port                  = 8484
@@ -59,5 +59,5 @@ resource "aws_security_group_rule" "sgr_elb_ingress_8080" {
   from_port         = 8080
   to_port           = 8080
   cidr_blocks       = ["0.0.0.0/0"]
-  security_group_id = "${aws_security_group.app_security_group.id}"
+  security_group_id = "${aws_security_group.elb_security_group.id}"
 }

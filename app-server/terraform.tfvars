@@ -19,3 +19,6 @@ health_check_unhealthy_threshold = 2
 health_check_target = "HTTP:8484/"
 health_check_interval = 15
 health_check_timeout = 3
+version = "1.8.1"
+os = "linux"
+arch = "amd64"

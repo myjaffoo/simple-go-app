@@ -16,7 +16,7 @@ resource "aws_launch_configuration" "lc" {
   name                        = "lc-${var.environment}"
   associate_public_ip_address = "${var.associate_public_ip_address}"
   ebs_optimized               = "${var.ebs_optimized}"
-  image_id                    = "${data.aws_ami.centos_ami.id}"
+  image_id                    = "${data.aws_ami.rhel7_ami.id}"
   instance_type               = "${var.instance_type}"
   key_name                    = "${var.key_name}"
   security_groups             = ["${aws_security_group.app_security_group.id}"]
@@ -51,6 +51,12 @@ resource "aws_autoscaling_group" "asg" {
   ]
 
   health_check_type = "${var.health_check_type}"
+
+  tag {
+    key                 = "Name"
+    value               = "asg-${var.environment}"
+    propagate_at_launch = true
+  }
 
   tag {
     key                 = "Environment"
