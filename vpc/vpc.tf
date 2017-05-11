@@ -6,36 +6,16 @@ resource "aws_vpc" "main" {
   }
 }
 
-resource "aws_subnet" "public_subnet_1a" {
+resource "aws_subnet" "public_subnet" {
+  count = 3
+
   vpc_id                  = "${aws_vpc.main.id}"
-  cidr_block              = "${var.public_subnet_1a_cidr}"
-  availability_zone       = "${data.aws_availability_zones.available.names[0]}"
+  cidr_block              = "${element(var.public_subnet_cidr, count.index)}"
+  availability_zone       = "${element(data.aws_availability_zones.available.names, count.index)}"
   map_public_ip_on_launch = true
 
   tags {
-    Name = "tooling-env-pub-1a"
-  }
-}
-
-resource "aws_subnet" "public_subnet_1b" {
-  vpc_id                  = "${aws_vpc.main.id}"
-  cidr_block              = "${var.public_subnet_1b_cidr}"
-  availability_zone       = "${data.aws_availability_zones.available.names[1]}"
-  map_public_ip_on_launch = true
-
-  tags {
-    Name = "tooling-env-pub-1b"
-  }
-}
-
-resource "aws_subnet" "public_subnet_1c" {
-  vpc_id                  = "${aws_vpc.main.id}"
-  cidr_block              = "${var.public_subnet_1c_cidr}"
-  availability_zone       = "${data.aws_availability_zones.available.names[2]}"
-  map_public_ip_on_launch = true
-
-  tags {
-    Name = "tooling-env-pub-1c"
+    Name = "tooling-env-pub-${element(data.aws_availability_zones.available.names, count.index)}"
   }
 }
 

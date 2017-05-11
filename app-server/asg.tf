@@ -3,9 +3,7 @@ module "vpc" {
 
   region = "${var.region}"
   vpc_cidr_block = "${var.vpc_cidr_block}"
-  public_subnet_1a_cidr = "${var.public_subnet_1a_cidr}"
-  public_subnet_1b_cidr = "${var.public_subnet_1b_cidr}"
-  public_subnet_1c_cidr = "${var.public_subnet_1c_cidr}"
+  public_subnet_cidr = "${var.public_subnet_cidr}"
 }
 
 resource "aws_launch_configuration" "lc" {
@@ -36,9 +34,7 @@ resource "aws_autoscaling_group" "asg" {
   launch_configuration = "${aws_launch_configuration.lc.name}"
 
   vpc_zone_identifier = [
-    "${module.vpc.public_subnet_1a}",
-    "${module.vpc.public_subnet_1b}",
-    "${module.vpc.public_subnet_1c}",
+    "${module.vpc.public_subnet_ids}"
   ]
 
   force_delete     = "${var.force_delete}"

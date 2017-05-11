@@ -3,9 +3,7 @@ resource "aws_elb" "app_elb" {
   security_groups = ["${aws_security_group.elb_security_group.id}"]
 
   subnets = [
-    "${module.vpc.public_subnet_1a}",
-    "${module.vpc.public_subnet_1b}",
-    "${module.vpc.public_subnet_1c}",
+    "${module.vpc.public_subnet_ids}"
   ]
 
   listener {
