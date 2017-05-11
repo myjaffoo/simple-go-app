@@ -30,9 +30,11 @@ $ export AWS_SECRET_ACCESS_KEY=xxxxx
 
 $ git clone https://github.com/yas360/simple-go-app.git
 $ cd app-server
+$ terraform get
 $ terraform plan
 $ terraform apply
 ```
+N.B - run terraform get with `-update` flag if you have made changes to `vpc` module after initial run.
 OR 
 
 passing them as command line variables when running terraform plan or apply e.g.
